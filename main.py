@@ -1,3 +1,4 @@
+from ast import comprehension
 import os
 from urllib import request
 from warnings import catch_warnings
@@ -55,6 +56,7 @@ def get_comp_row(compName):
 async def get_comp_datas(compName: str):
     print(compName)
     comp_row = get_comp_row(compName)
+    print(comp_row)
     if comp_row != False:
         return get_comp_data(comp_row)
     else:
