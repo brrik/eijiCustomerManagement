@@ -1,4 +1,5 @@
 import os
+from urllib import request
 from warnings import catch_warnings
 import gspread
 import datetime
@@ -50,8 +51,8 @@ def get_comp_row(compName):
         objRow = objComp.row
         return objRow
 
-@app.get("/getcompdata/{compName}")
-async def get_comp_datas(compName):
+@app.get("/getcompdata")
+async def get_comp_datas(compName: str):
     comp_row = get_comp_row(compName)
     if comp_row != False:
         return get_comp_data(comp_row)
