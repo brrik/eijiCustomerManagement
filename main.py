@@ -53,6 +53,7 @@ def get_comp_row(compName):
 
 @app.get("/getcompdata")
 async def get_comp_datas(compName: str):
+    print(compName)
     comp_row = get_comp_row(compName)
     if comp_row != False:
         return get_comp_data(comp_row)
