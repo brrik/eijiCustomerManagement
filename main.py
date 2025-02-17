@@ -58,7 +58,7 @@ async def get_comp_datas(compName: str):
     else:
         return False
 
-@app.post("/updatedata/")
+@app.post("/updatedata")
 async def update_data(request: Request):
     json_data = await request.json
     try:
