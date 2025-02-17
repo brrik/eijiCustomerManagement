@@ -60,7 +60,7 @@ async def get_comp_datas(compName: str):
 
 @app.post("/updatedata")
 async def update_data(request: Request):
-    json_data = await request.json
+    json_data = await request.json()
     try:
         comp_name = json_data.get("company-name")
         comp_row = get_comp_row(comp_name)
