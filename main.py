@@ -1,7 +1,4 @@
-from ast import comprehension
 import os
-from urllib import request
-from warnings import catch_warnings
 import gspread
 import datetime
 from fastapi import FastAPI, Request
@@ -13,7 +10,6 @@ app = FastAPI()
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
-    allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"]
 )
