@@ -1,3 +1,4 @@
+from ast import comprehension
 import os
 import gspread
 import datetime
@@ -43,7 +44,9 @@ def get_comp_data(compRow):
 def get_comp_row(compName):
     objComp = mainSheet.find(compName,in_column=5)
     if objComp is None:
-        return False
+        all_col_val = mainSheet.col_values(5)
+        last_row = len(all_col_val) + 1
+        return last_row
     else:
         objRow = objComp.row
         return objRow
@@ -64,7 +67,7 @@ async def update_data(request: Request):
     try:
         comp_name = json_data.get("company-name")
         comp_row = get_comp_row(comp_name)
-
+        
         header_data = mainSheet.row_values(1)
         for key, val in json_data.items():
             print(key)
