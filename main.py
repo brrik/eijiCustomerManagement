@@ -22,7 +22,7 @@ scope = ['https://spreadsheets.google.com/feeds','https://www.googleapis.com/aut
 credentials = ServiceAccountCredentials.from_json_keyfile_name(Auth, scope)
 Client = gspread.authorize(credentials)
 
-SpreadSheet = Client.open_by_key("1sLIWIP7_7m8FOZm7dfsTudvYfDVHal-T11mzRG2TBsQ")
+SpreadSheet = Client.open_by_key("1IzULLZWKnAekJkK0FmGShhnptYOhrnVtXBXtbAyGxvo")
 
 mainSheet = SpreadSheet.worksheet("企業データ一覧")
 
