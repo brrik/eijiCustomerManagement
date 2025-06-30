@@ -28,6 +28,8 @@ settingSheet = SpreadSheet.worksheet("設定")
 mainSheetName = settingSheet.cell(6,2).value
 indexRow = settingSheet.cell(7,2).value
 
+print(mainSheetName)
+
 mainSheet = SpreadSheet.worksheet(mainSheetName)
 
 
