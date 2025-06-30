@@ -37,6 +37,7 @@ mainSheet = SpreadSheet.worksheet(mainSheetName)
 @app.get("/getcompnames")
 async def get_comp_names():
     cols = mainSheet.col_values(5)
+    cols.pop(0)
     return cols
 
 
