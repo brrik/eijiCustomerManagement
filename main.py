@@ -25,8 +25,8 @@ Client = gspread.authorize(credentials)
 SpreadSheet = Client.open_by_key("1IzULLZWKnAekJkK0FmGShhnptYOhrnVtXBXtbAyGxvo")
 
 settingSheet = SpreadSheet.worksheet("設定")
-mainSheetName = settingSheet.cell(6,2).value
-indexRow = settingSheet.cell(7,2).value
+mainSheetName = settingSheet.cell(5,2).value
+indexRow = settingSheet.cell(6,2).value
 
 print(mainSheetName)
 
