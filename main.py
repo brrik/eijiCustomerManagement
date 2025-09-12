@@ -24,16 +24,25 @@ Client = gspread.authorize(credentials)
 
 SpreadSheet = Client.open_by_key("1IzULLZWKnAekJkK0FmGShhnptYOhrnVtXBXtbAyGxvo")
 
-mainSheet = SpreadSheet.worksheet("企業データ一覧")
+settingSheet = SpreadSheet.worksheet("設定")
+mainSheetName = settingSheet.cell(5,2).value
+indexRow = settingSheet.cell(6,2).value
+
+print(mainSheetName)
+
+mainSheet = SpreadSheet.worksheet(mainSheetName)
+
+
 
 @app.get("/getcompnames")
 async def get_comp_names():
     cols = mainSheet.col_values(5)
+    cols.pop(0)
     return cols
 
 
 def get_comp_data(compRow):
-    header_data = mainSheet.row_values(1)
+    header_data = mainSheet.row_values(indexRow)
     comp_data = mainSheet.row_values(compRow)
     return_dict = dict()
     for h, c in zip(header_data,comp_data):
@@ -68,7 +77,7 @@ async def update_data(request: Request):
         comp_name = json_data.get("company-name")
         comp_row = get_comp_row(comp_name)
         
-        header_data = mainSheet.row_values(1)
+        header_data = mainSheet.row_values(indexRow)
         for key, val in json_data.items():
             print(key)
             if key in header_data:
